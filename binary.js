@@ -20,14 +20,39 @@
 var test_array_a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
-function binary_search(search, array) {
-  // Your code here
+function binary_search(target, array) {
+  var min = 0, max = array.length - 1;
+  var guess;
+  while (min <= max) {
+    guess = Math.floor((min + max) / 2);
+    if (array[guess] === target) {
+      return guess;
+    } else if (array[guess] < target) {
+      min = guess + 1;
+    } else {
+      max = guess - 1;
+    }
+  }
+  return -1;
 }
 
 // Driver code
+//test case (Release 0)
+console.log("-----test case , Release 0-----");
+
+console.log(binary_search(5, test_array_a) === 4)
+console.log(binary_search(6, test_array_b) === 5)
+console.log(binary_search(10, test_array_a) === 9)
+console.log(binary_search(12, test_array_b) === -1)
+console.log(binary_search(2, test_array_a) === 1)
+console.log(binary_search(2, test_array_b)=== 1)
+ console.log("--------------------------------");
+// binary search index
+console.log("-----test case , Release 1-----");
 console.log(binary_search(5, test_array_a))
 console.log(binary_search(6, test_array_b))
 console.log(binary_search(10, test_array_a))
-console.log(binary_search(11, test_array_b))
+console.log(binary_search(12, test_array_b))
 console.log(binary_search(2, test_array_a))
 console.log(binary_search(2, test_array_b))
+console.log("-------------------------------");
