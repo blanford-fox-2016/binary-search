@@ -19,9 +19,24 @@
 
 var test_array_a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+var test_array_c = [3, 8, 10, 12, 14, 18, 25, 30]
 
 function binary_search(search, array) {
-  // Your code here
+
+  var low = 0;
+  var high = array.length;
+  while (low <= high) {
+    var mid = low + Math.floor((high - low) / 2);
+    if (array[mid] === search) {
+      return array[mid]
+    } else if (array[mid] > search) {
+      high = mid - 1;
+    } else if (array[mid] < search) {
+      low = mid + 1;
+    } else {
+      return "tidak ditemukan dalam data"
+    }
+  }
 }
 
 // Driver code
@@ -31,3 +46,29 @@ console.log(binary_search(10, test_array_a))
 console.log(binary_search(11, test_array_b))
 console.log(binary_search(2, test_array_a))
 console.log(binary_search(2, test_array_b))
+console.log(binary_search(10, test_array_c))
+
+// Your code here
+// var halfArr = array.length;
+// while (halfArr > 1) {
+//   if (halfArr % 2 === 0) {
+//     halfArr /= 2;
+//   } else {
+//     halfArr = Math.floor(halfArr / 2);
+//   }
+//   for (var i = 0; i < halfArr; i++) {
+//     if (array[halfArr] === search) {
+//       return array[halfArr]
+//     }
+//   }
+//   for (var i = 0; i < halfArr; i++) {
+//     if (array[halfArr] < search) {
+//       array = array.slice(0, halfArr);
+//     }
+//   }
+//   for (var i = 0; i < halfArr; i++) {
+//     if (array[halfArr] > search) {
+//       array = array.slice(-halfArr);
+//     }
+//   }
+// }
